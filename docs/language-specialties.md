@@ -1,5 +1,6 @@
-# Rust Language Specialties
+# Tcl Language Specialties
 
-- Rust is the canonical scheduler and generator baseline.
-- Shared domain concepts are modeled explicitly so follower languages can port stable semantics instead of re-deriving them.
-- Rust remains the reference for deterministic seeded behavior and normalized JSON semantics.
+- The implementation uses Tcl 8.6 core features only.
+- JSON is emitted by a small deterministic encoder to avoid package dependencies.
+- Tests use the standard `tcltest` package.
+- The scheduler uses a local LCG so same-seed behavior does not depend on Tcl build details.

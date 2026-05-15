@@ -1,24 +1,23 @@
 # tcl-stakeholder Status
 
-- Role: selected next-20 local-only scaffold for Tcl
-- Parity class: full-parity
-- State: scaffold-ready-local-only
-- Rewrite completeness: 12%
-- Functionality completeness: 3%
+- Role: local-only Tcl parity target
+- Parity class: deterministic-first full-parity target
+- State: Tranche C implemented, validation pending per change
+- Rewrite completeness: 45%
+- Functionality completeness: 35%
 - Branch: `main`
 - Origin: `git@github.com:stakeholder-circus/tcl-stakeholder.git`
 - Upstream: `https://github.com/giacomo-b/rust-stakeholder`
 
-## Blockers
-- Implementation has not started.
-- Full live-provider/runtime support is deferred to the second-pass provider rollout wave.
-- Publication is blocked until the publication/governance wave completes and remote access is available.
+## Implemented
+- Tcl CLI runtime in `bin/tcl-stakeholder` and `lib/stakeholder_cli.tcl`.
+- `--list-values`, `--focus-family`, `--output-format text|json`, `--seed`, `--trace`, and parity baseline flags.
+- Dedicated deterministic descriptors for classic six plus modern-core families.
+- Grouped fallback for post-modern-core families.
+- Explicit `--experimental-provider` fail-fast.
+- Native validation script, Tcl tests, Dockerfile, Nix flake, and CI workflows.
 
-## Next
-- Keep the scaffold baseline valid.
-- Add deterministic `classic-six + modern-core` implementation in the assigned tranche.
-- Keep grouped fallback for later families until the second wave.
-
-## Canonical references
-- `/Users/davidsupan/shareholder/stakeholder-core/docs/program/index.md`
-- `/Users/davidsupan/shareholder/stakeholder-core/docs/program/next-20-wave.md`
+## Remaining
+- Dedicated later-family generators.
+- Cross-repo fixture comparison against `stakeholder-core` once the workspace parity gate assigns this repo.
+- Publication/governance wave and remote wiring.

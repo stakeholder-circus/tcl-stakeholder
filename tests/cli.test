@@ -1,0 +1,26 @@
+#!/usr/bin/env tclsh
+package require tcltest
+namespace import ::tcltest::*
+set repo [file normalize [file join [file dirname [info script]] ..]]
+set cli [file join $repo bin tcl-stakeholder]
+
+test list-values-json {list-values emits families} -body {
+    exec tclsh $cli --list-values --output-format json
+} -match glob -result {*"generatorFamilies"*"code-analyzer"*"finops-capacity"*}
+
+test focused-json {focus-family emits requested family} -body {
+    exec tclsh $cli --output-format json --seed 42 --focus-family network-activity --trace
+} -match glob -result {*"family":"network-activity"*"eventType":"trace"*}
+
+test same-seed-stability {same seed is stable} -body {
+    set a [exec tclsh $cli --output-format json --seed 7 --complexity high]
+    set b [exec tclsh $cli --output-format json --seed 7 --complexity high]
+    expr {$a eq $b}
+} -result 1
+
+test experimental-provider-fail-fast {experimental provider is explicit fail-fast} -body {
+    catch {exec tclsh $cli --experimental-provider openai 2>@1} out
+    string match {*explicit fail-fast*} $out
+} -result 1
+
+cleanupTests

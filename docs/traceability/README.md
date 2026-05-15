@@ -1,5 +1,7 @@
-# Rust Traceability
+# Tcl Traceability
 
-- Rust is the source-of-truth side of the rewrite program.
-- Behavioral changes here must be mirrored into `stakeholder-core` traceability, docs, and downstream packets.
-- Downstream repos should cite Rust file paths and the corresponding `stakeholder-core` rows when porting behavior.
+This repo ports the Rust stakeholder behavior into a Tcl deterministic-first CLI.
+
+Traceability classes:
+- `normalized-equivalent`: event shape, family identity, seeded stability, and fail-fast semantics match the shared contract while Tcl text rendering stays plain.
+- `intentional divergence`: live providers are fail-fast and later families use grouped fallback.

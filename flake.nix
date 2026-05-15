@@ -1,5 +1,5 @@
 {
-  description = "tcl-stakeholder scaffold";
+  description = "tcl-stakeholder deterministic Tcl CLI";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   outputs = { self, nixpkgs }:
     let
@@ -9,18 +9,27 @@
       packages = forAllSystems (system:
         let pkgs = import nixpkgs { inherit system; };
         in {
+          default = pkgs.writeShellApplication {
+            name = "tcl-stakeholder";
+            runtimeInputs = [ pkgs.tcl ];
+            text = ''
+              exec ${pkgs.tcl}/bin/tclsh ${self}/bin/tcl-stakeholder "$@"
+            '';
+          };
           check = pkgs.writeShellApplication {
             name = "check";
-            runtimeInputs = [ pkgs.python3 ];
+            runtimeInputs = [ pkgs.python3 pkgs.tcl ];
             text = ''
               python3 scripts/validate_scaffold.py
             '';
           };
-          default = self.packages.${system}.check;
         });
       apps = forAllSystems (system: {
+        default = { type = "app"; program = "${self.packages.${system}.default}/bin/tcl-stakeholder"; };
         check = { type = "app"; program = "${self.packages.${system}.check}/bin/check"; };
-        default = self.apps.${system}.check;
       });
+      devShells = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system; };
+        in { default = pkgs.mkShell { packages = [ pkgs.tcl pkgs.python3 ]; }; });
     };
 }

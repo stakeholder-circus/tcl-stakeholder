@@ -1,0 +1,7 @@
+#!/usr/bin/env tclsh
+# tcl-stakeholder: deterministic Tcl port of stakeholder terminal simulation.
+# SPDX-License-Identifier: MIT
+
+set script_dir [file dirname [file normalize [info script]]]
+source [file join [file dirname $script_dir] lib stakeholder_cli.tcl]
+exit [stakeholder::main $argv]

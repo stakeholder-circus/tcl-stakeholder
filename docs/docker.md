@@ -1,9 +1,11 @@
-# Rust Docker
+# Tcl Docker
 
 ## Build and test
-- `docker build -t rust-stakeholder .`
-- `docker run --rm rust-stakeholder --list-values`
+```bash
+docker build -t tcl-stakeholder .
+docker run --rm tcl-stakeholder --list-values --output-format json
+docker run --rm tcl-stakeholder --focus-family network-activity --output-format json --seed 42
+```
 
 ## Rationale
-- The image compiles and tests the Rust baseline before packaging the runtime binary.
-- Docker is the reproducible Linux gate; host and CI matrices still cover native OS behavior.
+- The image installs Tcl and Python, runs native validation during build, and exposes the Tcl CLI as the entrypoint.

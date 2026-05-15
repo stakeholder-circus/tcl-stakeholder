@@ -1,9 +1,7 @@
 # Tcl Gaps
 
-- `tcl-stakeholder.foundation-pending`: deterministic scaffold-only baseline exists, but runtime foundation has not started.
-- `tcl-stakeholder.classic-six-pending`: the six dedicated baseline families are not implemented yet.
-- `tcl-stakeholder.modern-core-pending`: the modern-core families are not implemented yet.
-- `tcl-stakeholder.post-modern-core-pending`: later families remain grouped fallback work.
-- `tcl-stakeholder.traceability-rows-pending`: first-push traceability rows are not populated yet.
-- `tcl-stakeholder.codeql-activation-pending`: enable only if the language is supported after publication.
-- `tcl-stakeholder.flake-lock-pending`: generate `flake.lock` once the scaffold baseline is stable.
+- `tcl-stakeholder.later-family-dedicated-generators`: post-modern-core families currently use grouped deterministic fallback instead of dedicated phrase banks.
+- `tcl-stakeholder.live-provider-runtime`: `--experimental-provider` is explicit fail-fast; no live provider calls are allowed in deterministic Tranche C.
+- `tcl-stakeholder.cross-repo-fixtures`: in-repo same-seed JSON validation exists; workspace-level `stakeholder-core` fixture comparison remains a later gate.
+- `tcl-stakeholder.ansi-rich-text`: text output is intentionally plain/minimal; normalized JSON is the parity target.
+- `tcl-stakeholder.codeql`: GitHub CodeQL has no Tcl analyzer, so CI records this as not applicable and runs Tcl validation instead.

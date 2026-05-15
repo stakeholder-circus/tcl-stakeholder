@@ -1,5 +1,5 @@
-# Rust Experimental Surface
+# Tcl Experimental Surface
 
-- Live-provider concepts are modeled separately from the deterministic baseline.
-- OpenAI-compatible APIs, Anthropic APIs, and consumer-account adapters remain documentation and interface work until explicitly wired into a guarded runtime path.
-- Experimental additions must not change seeded parity fixtures by default.
+Live-provider execution is not implemented in Tranche C. Passing `--experimental-provider PROVIDER` exits non-zero with a clear fail-fast message.
+
+This keeps deterministic JSON fixtures independent from provider availability, credentials, network latency, and model output drift.

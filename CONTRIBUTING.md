@@ -1,19 +1,20 @@
-# Contributing to rust-stakeholder
+# Contributing to tcl-stakeholder
 
 ## Rules
-- Treat Rust as the source-of-truth baseline for downstream ports.
+- Treat Rust plus `stakeholder-core` as the behavioral source-of-truth.
 - Use Conventional Commits.
-- Do not land silent behavioral changes; update `stakeholder-core` traceability and docs in the same tranche.
-- Keep deterministic seeded behavior stable unless the change is explicitly documented as a baseline evolution.
+- Do not land silent behavioral changes; update traceability and gap docs in the same tranche.
+- Keep deterministic seeded JSON stable unless the change is documented as baseline evolution.
 
 ## Local workflow
-- `cargo fmt`
-- `cargo clippy -- -D warnings`
-- `cargo test`
-- `docker build -t rust-stakeholder .`
-- `docker run --rm rust-stakeholder --list-values`
+```bash
+python3 scripts/validate_scaffold.py
+tclsh tests/cli.test
+docker build -t tcl-stakeholder .
+docker run --rm tcl-stakeholder --list-values --output-format json
+```
 
 ## Change discipline
-- Generator-family additions must update docs, examples, and fixtures.
-- Experimental provider work must stay clearly separated from deterministic parity paths.
-- Prefer additive event-schema evolution over breaking changes.
+- Dedicated family additions must update docs, tests, and traceability.
+- Experimental provider work must stay separated from deterministic parity paths.
+- Preserve the upstream MIT license notice.

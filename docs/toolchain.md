@@ -1,16 +1,25 @@
-  # Tcl Toolchain
+# Tcl Toolchain
 
-  - State: scaffold-only next-20 prep
-  - Toolchain source: `brew`
+- Runtime: Tcl 8.6+ via `tclsh`
+- Validation: Python 3 plus Tcl `tcltest`
+- Preferred macOS install: `brew install tcl-tk`
 
-  ## Planned commands after promotion
-    - `brew install tcl-tk`
-- `export PATH="/opt/homebrew/opt/tcl-tk/bin:$PATH"`
-- `tclsh <<< 'puts [info patchlevel]'`
+## Native commands
+```bash
+tclsh <<< 'puts [info patchlevel]'
+python3 scripts/validate_scaffold.py
+tclsh tests/cli.test
+```
 
-  ## Scaffold-time checks
-  - `python3 scripts/validate_scaffold.py`
-  - `/nix/var/nix/profiles/default/bin/nix --extra-experimental-features 'nix-command flakes' flake lock`
+## Nix commands
+```bash
+nix develop
+nix run .#check
+nix run . -- --list-values --output-format json
+```
 
-  ## Current limitation
-  - Use Brew Tcl/Tk, not the system Tcl 8.5 runtime.
+## Docker commands
+```bash
+docker build -t tcl-stakeholder .
+docker run --rm tcl-stakeholder --list-values --output-format json
+```

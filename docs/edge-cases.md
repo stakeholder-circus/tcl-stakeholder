@@ -1,6 +1,8 @@
-# Rust Edge Cases
+# Tcl Edge Cases
 
-- Seeded JSON runs must remain deterministic.
-- `alerts` and `team` act as injections into the scheduler, not alternate modes.
-- Healthcare, charging, protocol, and quantum families should only enter plans when dev type or keyword routing makes them eligible.
-- Experimental live-provider concepts must not affect default deterministic output.
+- Same-seed JSON output must be byte-stable for deterministic arguments.
+- `--focus-family` constrains activity events to one family.
+- `--duration 0` means run until interrupted; validation uses finite durations.
+- `--experimental-provider` fails fast and never calls a live provider.
+- Empty `--framework` is allowed and omitted from JSON context.
+- Text output is intentionally plain so terminal color differences do not affect parity.

@@ -1,16 +1,16 @@
-# Rust Example Outputs
+# Tcl Example Outputs
 
-## Security
+## List values
 ```bash
-cargo run -- --dev-type security --jargon high --complexity extreme --alerts --seed 42
+tclsh bin/tcl-stakeholder --list-values --output-format json
 ```
 
-## Blockchain
+## Focused deterministic JSON
 ```bash
-cargo run -- --dev-type blockchain --framework "rollup-mcp-gateway" --output-format json --seed 7
+tclsh bin/tcl-stakeholder --output-format json --seed 42 --focus-family network-activity --trace
 ```
 
-## Healthcare + charging + quantum crossover
+## Modern-core text run
 ```bash
-cargo run -- --project "hospital-ocpp-quantum-control" --framework "mcp grpc" --jargon extreme --team --trace --seed 11
+tclsh bin/tcl-stakeholder --dev-type security --jargon high --complexity extreme --alerts --team --seed 11
 ```
