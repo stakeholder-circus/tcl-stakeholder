@@ -1,4 +1,4 @@
-FROM alpine:3.20
+FROM alpine:3.24
 LABEL org.opencontainers.image.title="tcl-stakeholder"
 LABEL org.opencontainers.image.description="Deterministic Tcl stakeholder CLI"
 RUN apk add --no-cache tcl python3
