@@ -16,8 +16,8 @@ REQUIRED = [
     '.githooks/commit-msg', '.githooks/pre-push', '.github/CODEOWNERS',
     '.github/PULL_REQUEST_TEMPLATE.md', '.github/dependabot.yml',
     '.github/workflows/actionlint.yml', '.github/workflows/dependency-review.yml',
-    '.github/workflows/ci.yml', '.github/workflows/ci-native.yml',
-    '.github/workflows/docker-smoke.yml', 'flake.nix', 'Dockerfile', 'flake.lock',
+    '.github/workflows/ci-native.yml', '.github/workflows/docker-smoke.yml',
+    '.github/workflows/sast.yml', 'flake.nix', 'Dockerfile', 'flake.lock',
 ]
 
 
