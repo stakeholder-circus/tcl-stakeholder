@@ -255,7 +255,10 @@ proc stakeholder::parseArgs {argv} {
     if {$cfg(focusFamily) ne "" && ![contains [allFamilies] $cfg(focusFamily)]} {error "invalid --focus-family '$cfg(focusFamily)'"}
     if {![string is integer -strict $cfg(duration)] || $cfg(duration) < 0} {error "invalid --duration '$cfg(duration)'"}
     if {$cfg(seed) ne "" && ![string is integer -strict $cfg(seed)]} {error "invalid --seed '$cfg(seed)'"}
-    if {$cfg(experimentalProvider) ne ""} {error "experimental provider '$cfg(experimentalProvider)' is not implemented in deterministic Tcl tranche; live providers are explicit fail-fast"}
+    if {$cfg(experimentalProvider) ne ""} {
+        error "experimental provider '$cfg(experimentalProvider)' is not implemented\
+            in deterministic Tcl tranche; live providers are explicit fail-fast"
+    }
     return [array get cfg]
 }
 proc stakeholder::selectFamilies {cfgName} {
