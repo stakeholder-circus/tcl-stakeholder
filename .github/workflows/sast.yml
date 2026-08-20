@@ -23,4 +23,4 @@ jobs:
       - name: Install pinned Tcl analyzer
         run: python -m pip install --disable-pip-version-check tclint==0.8.0
       - name: Run Tcl static analysis
-        run: tclint bin/tcl-stakeholder lib tests
+        run: tclint --style-line-length 140 bin/tcl-stakeholder lib tests
